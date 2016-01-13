@@ -1,4 +1,6 @@
 import React, { Component, PropTypes }  from 'react';
+import { StyleRoot }                    from 'radium';
+import ConfiguredRadium                 from 'configuredRadium.js';
 
 export default class Application extends Component {
     static propTypes = {
@@ -11,9 +13,9 @@ export default class Application extends Component {
 
     render() {
         return (
-            <div>
+            <StyleRoot radiumConfig={{ userAgent: ConfiguredRadium.getUserAgent() }}>
                 { this.props.children }
-            </div>
+            </StyleRoot>
         );
     }
 }

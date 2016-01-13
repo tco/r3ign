@@ -18,4 +18,8 @@ configuredRadium.setUserAgent = (userAgent) => {
     _userAgent = userAgent;
 };
 
+configuredRadium.getUserAgent = () => {
+    return _userAgent;
+};
+
 export default configuredRadium;
