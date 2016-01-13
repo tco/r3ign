@@ -21,7 +21,8 @@
     "redux-simple-router": "^1.0.2",
     "serialize-javascript": "^1.1.2",
     "serve-favicon": "^2.3.0",
-    "superagent": "^1.6.1"
+    "superagent": "^1.6.1",
+    "url-loader": "^0.5.7"
   },
   "devDependencies": {
     "babel-core": "^6.3.26",
