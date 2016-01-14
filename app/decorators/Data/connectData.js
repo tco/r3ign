@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import hoistStatics         from 'hoist-non-react-statics';
 
 /*
- Note:
- When this decorator is used, it MUST be the first (outermost) decorator.
- Otherwise, we cannot find and call the fetchData methods.
- */
+    When this decorator is used, it MUST be the first (outermost) decorator.
+    Otherwise, we cannot find and call the fetchData methods.
+*/
 
 export default function connectData(fetchData, clientOnly = false) {
 

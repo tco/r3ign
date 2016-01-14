@@ -1,36 +1,28 @@
 import superagent from 'superagent';
 
 export default class ApiClient {
-    constructor(req) {
+    constructor(/* request */) {
         ['get', 'post', 'put', 'patch', 'del'].
             forEach((method) => {
                 this[method] = (path, options) => {
                     return new Promise((resolve, reject) => {
                         const url = this.formatUrl(path);
-                        const request = superagent[method](url);
+                        const superRequest = superagent[method](url);
                         if(options && options.params) {
-                            request.query(options.params);
-                        }
-                        if(__SERVER__ && req.get('cookie')) {
-                            request.set('cookie', req.get('cookie'));
+                            superRequest.query(options.params);
                         }
                         if(options && options.data) {
-                            request.send(options.data);
+                            superRequest.send(options.data);
                         }
-                        request.end((err, res) => {
+                        superRequest.end((err, response) => {
                             if(err) {
-                                reject((res && res.body) || err);
+                                reject((response && response.body) || err);
                             } else {
-                                resolve(res.body);
+                                resolve(response.body);
                             }
                         });
                     });
                 };
             });
-    }
-
-    formatUrl(path) {
-        const adjustedPath = path[0] !== '/' ? '/' + path : path;
-        return adjustedPath;
     }
 }
