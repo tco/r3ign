@@ -91,9 +91,10 @@ export default function connectData(fetchData, clientOnly = false) {
 ```
 
 ##redux
-Redux reducers live here. [epeli](https://github.com/epeli) had a good idea to improve the action reducer pattern
-and got rid of the switch case with a function mapper syntax. I like the change and the current touchy feely feeling is
-that I will be using this pattern from now on.
+Redux reducers live here. [epeli](https://github.com/epeli) had a good [idea](https://gist.github.com/epeli/3443e448287133ca5fb2)
+to improve the action reducer pattern and got rid of the switch case in favor of a mapper function syntax. I like the
+change and the current touchy feely feeling is that I will be using this pattern from now on. All I had to do was to add
+the initialState to comply with redux
 
 redux/utils/createReducerFromMapping.js
 ```
