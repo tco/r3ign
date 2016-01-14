@@ -1,10 +1,10 @@
-import {
-    Cookies,
-    createReducerFromMapping
-} from 'tools';
+import { Cookies }                  from 'utils/index.js';
+import { createReducerFromMapping } from 'redux/utils/index.js';
 
 const ADD_SUCCESS     = 'MUCI/Cookies/ADD_SUCCESS',
     ADD_FAIL        = 'MUCI/Cookies/ADD_FAIL';
+
+const initialState = { loaded: true };
 
 export function isLoaded(globalState) {
     return globalState.cookies && globalState.cookies.loaded;
@@ -20,22 +20,20 @@ export function add(key, value, expires, path) {
     return { type, result };
 }
 
-export default () => {
-    return createReducerFromMapping({
-        [ADD_SUCCESS]: (state, action) => {
-            const result = action.result;
-            return {
-                ...state,
-                added: true,
-                ...result
-            };
-        },
-        [ADD_FAIL]: (state, action) => {
-            return {
-                ...state,
-                added: false,
-                error: action.error
-            };
-        }
-    });
-};
+export default createReducerFromMapping({
+    [ADD_SUCCESS]: (state, action) => {
+        const result = action.result;
+        return {
+            ...state,
+            added: true,
+            ...result
+        };
+    },
+    [ADD_FAIL]: (state, action) => {
+        return {
+            ...state,
+            added: false,
+            error: action.error
+        };
+    }
+}, initialState);

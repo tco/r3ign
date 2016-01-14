@@ -3,4 +3,3 @@ export Cookies from './Cookies/Cookies.js';
 
 export getStatusFromRoutes from './Helpers/getStatusFromRoutes.js';
 export fetchAllData from './Helpers/fetchAllData.js';
-export createReducerFromMapping from './Helpers/createReducerFromMapping.js';
