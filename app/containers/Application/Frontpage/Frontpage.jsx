@@ -23,16 +23,18 @@ export default class Frontpage extends Component {
     }
 
     toggleRotating() {
-        const rotateLogo = this.props.cookies.rotateLogo | 0;
-        let newState = 1;
-
-        if(rotateLogo !== undefined) {
+        const rotateLogo = this.state.rotating,
             newState = rotateLogo ? 0 : 1;
-        }
-        this.props.addCookie('rotateLogo', newState, Infinity, '/');
-        this.setState({
-            rotating: !!newState
+
+        this.props.addCookie('rotateLogo', newState, Infinity, '/').then((response) => {
+            console.log(response);
+            if(response.result) {
+                this.setState({
+                    rotating: !!newState
+                });
+            }
         });
+
     }
 
     render() {

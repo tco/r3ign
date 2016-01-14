@@ -14,9 +14,9 @@ export default class ApiClient {
                         if(options && options.data) {
                             superRequest.send(options.data);
                         }
-                        superRequest.end((err, response) => {
-                            if(err) {
-                                reject((response && response.body) || err);
+                        superRequest.end((error, response) => {
+                            if(error) {
+                                reject((response && response.body) || error);
                             } else {
                                 resolve(response.body);
                             }
