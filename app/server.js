@@ -67,8 +67,8 @@ app.use((request, response) => {
         height: cookies.get('screenHeight') + 'px'
     });
 
-    function doctypify(content) {
-        return '<!DOCTYPE html>\n' + content;
+    function doctypify(html) {
+        return '<!DOCTYPE html>\n' + html;
     }
 
     function hydrateOnClient() {

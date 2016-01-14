@@ -1,9 +1,7 @@
-import React, { Component }  from 'react';
-import { connect }           from 'react-redux';
+import React, { Component } from 'react';
+import { connect }          from 'react-redux';
 
-import {
-    StandardPage
-} from 'components';
+import { StandardPage }     from 'components/index.js';
 
 @connect(state => ({
     routing: state.routing

@@ -4,7 +4,7 @@ import configuredRadium         from 'styles/configuredRadium.js';
 import {
     StandardPage,
     RotatingLogo
-} from 'components';
+} from 'components/index.js';
 
 @configuredRadium
 export default class Frontpage extends Component {

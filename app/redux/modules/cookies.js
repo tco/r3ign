@@ -1,14 +1,10 @@
 import { Cookies }                  from 'utils/index.js';
 import { createReducerFromMapping } from 'redux/utils/index.js';
 
-const ADD_SUCCESS     = 'MUCI/Cookies/ADD_SUCCESS',
-    ADD_FAIL        = 'MUCI/Cookies/ADD_FAIL';
+const ADD_SUCCESS   = 'R3IGN/Cookies/ADD_SUCCESS',
+    ADD_FAIL        = 'R3IGN/Cookies/ADD_FAIL';
 
 const initialState = { loaded: true };
-
-export function isLoaded(globalState) {
-    return globalState.cookies && globalState.cookies.loaded;
-}
 
 export function add(key, value, expires, path) {
     const result = {};
