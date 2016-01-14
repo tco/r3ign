@@ -96,8 +96,5 @@
   "bugs": {
     "url": "https://github.com/tco/r3ign/issues"
   },
-  "engines": {
-    "node": "5.2.0"
-  },
   "homepage": "https://tco.github.com/r3ign"
 }
