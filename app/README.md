@@ -7,7 +7,7 @@ To elaborate a little on how I like to structure my application
 Contains all your [reusable components](https://facebook.github.io/react/docs/reusable-components.html). 
 These are frequently used by your containers. No lifecycle methods here, so they can also be [stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) 
 
-```
+```javascript
 
 import React            from 'react';
 import configuredRadium from 'styles/configuredRadium.js';
@@ -34,7 +34,7 @@ export default configuredRadium(StandardPage);
 Containers are the building blocks of your application. As a rule of thumb, a class component is mapped to a route. It 
 will connect to the store and pass state as props to stateless function components. 
 
-```
+```javascript
 
 import React, { Component }  from 'react';
 import { connect }           from 'react-redux';
@@ -61,7 +61,7 @@ export default class NotFound extends Component {
 ##decorators
 Higher Order Components
 
-```
+```javascript
 
 import React, { Component } from 'react';
 import hoistStatics         from 'hoist-non-react-statics';
@@ -97,7 +97,7 @@ change and the current touchy feely feeling is that I will be using this pattern
 the initialState to comply with redux
 
 redux/utils/createReducerFromMapping.js
-```
+```javascript
 
 export default (map, initialState) => {
     return (state = initialState, action) => {
@@ -111,7 +111,7 @@ export default (map, initialState) => {
 ```
 
 redux/modules/cookies.js
-```
+```javascript
 
 import { Cookies }                  from 'utils/index.js';
 import { createReducerFromMapping } from 'redux/utils/index.js';
