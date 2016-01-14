@@ -25,12 +25,12 @@ import { create as createMatchMediaMock }   from 'match-media-mock';
 // Routing
 import getRoutes    from './routes.js';
 
-// Tools
+// Utils
 import {
     ApiClient,
     getStatusFromRoutes,
     fetchAllData
-} from 'tools';
+} from 'utils/index.js';
 
 // Containers
 import HTML from './containers/HTML.jsx';
