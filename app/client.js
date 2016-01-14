@@ -6,7 +6,7 @@ import { Provider }             from 'react-redux';
 import { Router }               from 'react-router';
 import { syncReduxAndRouter }   from 'redux-simple-router';
 
-import { ApiClient }        from 'tools';
+import { ApiClient }        from 'utils/index.js';
 import createStore          from './redux/create.js';
 import getRoutes            from './routes.js';
 

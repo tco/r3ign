@@ -1,5 +1,5 @@
 import React            from 'react';
-import configuredRadium from 'configuredRadium.js';
+import configuredRadium from 'styles/configuredRadium.js';
 
 const standardPageStyle = {
     maxWidth:   '48em',

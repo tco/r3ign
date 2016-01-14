@@ -19,7 +19,7 @@ import { RoutingContext, match }    from 'react-router';
 import createStore  from './redux/create.js';
 
 // Radium
-import ConfiguredRadium                     from './configuredRadium.js';
+import configuredRadium                     from './styles/configuredRadium.js';
 import { create as createMatchMediaMock }   from 'match-media-mock';
 
 // Routing
@@ -40,7 +40,7 @@ const app = new Express(),
     staticsPath = path.join(__dirname, '..', 'static'),
     matchMediaMock = createMatchMediaMock();
 
-ConfiguredRadium.setMatchMedia(matchMediaMock);
+configuredRadium.setMatchMedia(matchMediaMock);
 
 app.use(compression());
 app.use(cookieParser());
@@ -59,7 +59,7 @@ app.use((request, response) => {
             cookies: cookies.all()
         });
 
-    ConfiguredRadium.setUserAgent(request.headers['user-agent']);
+    configuredRadium.setUserAgent(request.headers['user-agent']);
 
     matchMediaMock.setConfig({
         type: 'screen',

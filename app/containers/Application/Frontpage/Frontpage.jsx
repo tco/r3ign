@@ -1,12 +1,12 @@
 import React, { Component }     from 'react';
-import ConfiguredRadium         from 'configuredRadium.js';
+import configuredRadium         from 'styles/configuredRadium.js';
 
 import {
     StandardPage,
     RotatingLogo
 } from 'components';
 
-@ConfiguredRadium
+@configuredRadium
 export default class Frontpage extends Component {
     render() {
         return (

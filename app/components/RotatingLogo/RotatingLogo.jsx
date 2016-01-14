@@ -1,6 +1,6 @@
 import React                    from 'react';
 import Radium, { StyleRoot }    from 'radium';
-import configuredRadium         from 'configuredRadium.js';
+import configuredRadium         from 'styles/configuredRadium.js';
 
 const r3ign = require('images/r3ign.png');
 
