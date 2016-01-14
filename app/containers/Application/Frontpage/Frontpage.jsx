@@ -27,8 +27,8 @@ export default class Frontpage extends Component {
             newState = rotateLogo ? 0 : 1;
 
         this.props.addCookie('rotateLogo', newState, Infinity, '/').then((response) => {
-            console.log(response);
-            if(response.result) {
+            const state = response.result | 0;
+            if(state === newState) {
                 this.setState({
                     rotating: !!newState
                 });
