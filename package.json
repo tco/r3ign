@@ -43,7 +43,7 @@
     "eslint-plugin-react": "^3.13.1",
     "file-loader": "^0.8.5",
     "piping": "^0.3.0",
-    "react-tools": "^0.13.3",
+    "react-tools": "^0.10.0",
     "react-transform": "0.0.3",
     "react-transform-catch-errors": "^1.0.1",
     "redbox-react": "^1.2.0",
