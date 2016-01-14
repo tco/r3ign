@@ -61,8 +61,92 @@ export default class NotFound extends Component {
 ##decorators
 Higher Order Components
 
+```
+
+import React, { Component } from 'react';
+import hoistStatics         from 'hoist-non-react-statics';
+
+/*
+    When this decorator is used, it MUST be the first (outermost) decorator.
+    Otherwise, we cannot find and call the fetchData methods.
+*/
+
+export default function connectData(fetchData, clientOnly = false) {
+
+    return function wrapWithFetchData(WrappedComponent) {
+        class ConnectData extends Component {
+            render() {
+                return <WrappedComponent { ...this.props } />;
+            }
+        }
+
+        ConnectData.fetchData = fetchData;
+        ConnectData.fetchInClientOnly = clientOnly;
+
+        return hoistStatics(ConnectData, WrappedComponent);
+    };
+}
+
+
+```
+
 ##redux
+Redux reducers live here. [epeli](https://github.com/epeli) had a good idea to improve the action reducer pattern
+and got rid of the switch case with a function mapper syntax. I like the change and the current touchy feely feeling is
+that I will be using this pattern from now on.
+
+redux/utils/createReducerFromMapping.js
+```
+
+export default (map, initialState) => {
+    return (state = initialState, action) => {
+        const reducer = map[action.type];
+        if (typeof reducer === 'function') return reducer(state, action);
+        return state;
+    };
+};
 
 
-##utils
-Keep your stuff organized
+```
+
+redux/modules/cookies.js
+```
+
+import { Cookies }                  from 'utils/index.js';
+import { createReducerFromMapping } from 'redux/utils/index.js';
+
+const ADD_SUCCESS   = 'R3IGN/Cookies/ADD_SUCCESS',
+    ADD_FAIL        = 'R3IGN/Cookies/ADD_FAIL';
+
+const initialState = { loaded: true };
+
+export function add(key, value, expires, path) {
+    const result = {};
+    let type = ADD_FAIL;
+    if(Cookies.setItem(key, value, expires, path)) {
+        type = ADD_SUCCESS;
+        result[key] = Cookies.getItem(key);
+    }
+    return { type, result };
+}
+
+export default createReducerFromMapping({
+    [ADD_SUCCESS]: (state, action) => {
+        const result = action.result;
+        return {
+            ...state,
+            added: true,
+            ...result
+        };
+    },
+    [ADD_FAIL]: (state, action) => {
+        return {
+            ...state,
+            added: false,
+            error: action.error
+        };
+    }
+}, initialState);
+
+
+```
