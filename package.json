@@ -60,8 +60,7 @@
     "lint": "./node_modules/.bin/eslint -c .eslintrc app",
     "start-dev": "node ./node_modules/better-npm-run start-dev",
     "watch-client": "node ./node_modules/better-npm-run watch-client",
-    "dev": "./node_modules/.bin/concurrent --kill-others 'npm run start-dev' 'npm run watch-client'",
-    "test": "karma start"
+    "dev": "./node_modules/.bin/concurrent --kill-others 'npm run start-dev' 'npm run watch-client'"
   },
   "betterScripts": {
     "start-dev": {
