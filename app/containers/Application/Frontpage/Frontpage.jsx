@@ -22,7 +22,7 @@ export default class Frontpage extends Component {
         };
     }
 
-    toggleRotating() {
+    toggleRotating = () => {
         const rotateLogo = this.state.rotating,
             newState = rotateLogo ? 0 : 1;
 
@@ -35,12 +35,12 @@ export default class Frontpage extends Component {
             }
         });
 
-    }
+    };
 
     render() {
         return (
             <StandardPage>
-                <RotatingLogo rotate={ this.state.rotating } toggleRotating={ this.toggleRotating.bind(this) } />
+                <RotatingLogo rotate={ this.state.rotating } toggleRotating={ this.toggleRotating } />
             </StandardPage>
         );
     }
