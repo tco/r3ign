@@ -3,27 +3,23 @@
 
 Opinionated igniter inspired by [React Redux Universal Hot Example](https://github.com/erikras/react-redux-universal-hot-example)
 
+In the directory structure, these are probably the ones that need some further explaining:
+
 r3ign
-* [app](https://github.com/tco/r3ign/app)
-    - [components](https://github.com/tco/r3ign/app/components)
-    - [containers](https://github.com/tco/r3ign/app/containers)
-    - [decorators](https://github.com/tco/r3ign/app/decorators)
-    - [redux](https://github.com/tco/r3ign/app/redux)
-    - [tools](https://github.com/tco/r3ign/app/tools)
-* [run](https://github.com/tco/r3ign/run)
-* [static](https://github.com/tco/r3ign/static)
-* [webpack](https://github.com/tco/r3ign/webpack)
+* [app](https://github.com/tco/r3ign/tree/master/app)
+* [run](https://github.com/tco/r3ign/tree/master/run)
+* [webpack](https://github.com/tco/r3ign/tree/master/webpack)
 
 ###Installation
 ```
 
-npm install
+$ npm install
 
 ```
 
 ###Development
 ```
 
-npm run dev
+$ npm run dev
 
 ```
