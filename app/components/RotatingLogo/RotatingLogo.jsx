@@ -19,22 +19,25 @@ const r3ignFrames = Radium.keyframes({
     '50%':  { transform: 'rotateY(-180deg)' }
 }, 'r3ign');
 
-const r3ignContainerStyles = {
-    display: 'block',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    marginLeft: '-50px',
-    marginTop: '-50px',
-    width: '100px',
-    height: '100px',
-    animation: 'x 3s linear 0s infinite',
-    animationName: r3ignFrames
+const getR3ignContainerStyles = (rotate) => {
+    return {
+        display: 'block',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        marginLeft: '-50px',
+        marginTop: '-50px',
+        width: '100px',
+        height: '100px',
+        cursor: 'pointer',
+        animation: rotate ? 'x 3s linear 0s infinite' : 'none',
+        animationName: rotate ? r3ignFrames : 'none'
+    };
 };
 
-const RotatingLogo = () => {
+const RotatingLogo = (props) => {
     return (
-        <StyleRoot style={ r3ignContainerStyles }>
+        <StyleRoot style={ getR3ignContainerStyles(props.rotate) } onClick={ props.toggleRotating }>
             <div style={ r3ignLogoStyles }></div>
             <div style={[r3ignLogoStyles, { transform: 'rotateY(180deg)' }]}></div>
         </StyleRoot>
