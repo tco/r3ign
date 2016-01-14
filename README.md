@@ -7,8 +7,7 @@ In the directory structure, these are probably the ones that need some further e
 
 r3ign
 * [app](https://github.com/tco/r3ign/tree/master/app)
-* [run](https://github.com/tco/r3ign/tree/master/run)
-* [webpack](https://github.com/tco/r3ign/tree/master/webpack)
+* webpack (todo)
 
 ###Installation
 ```
