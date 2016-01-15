@@ -2,7 +2,7 @@ import React, { Component }     from 'react';
 import { connect }              from 'react-redux';
 import configuredRadium         from 'styles/configuredRadium.js';
 
-import { add as addCookie }     from 'redux/modules/cookies.js';
+import { add as addCookie }     from 'redux/modules/cookies/cookies.js';
 
 import {
     StandardPage,
@@ -27,7 +27,7 @@ export default class Frontpage extends Component {
             newState = rotateLogo ? 0 : 1;
 
         this.props.addCookie('rotateLogo', newState, Infinity, '/').then((response) => {
-            const state = response.result | 0;
+            const state = response.result.rotateLogo | 0;
             if(state === newState) {
                 this.setState({
                     rotating: !!newState

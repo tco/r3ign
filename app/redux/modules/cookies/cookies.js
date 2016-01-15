@@ -21,7 +21,9 @@ export function add(key, value, expires, path) {
             }
             return new Promise((resolve, reject) => {
                 if(success) {
-                    resolve(Cookies.getItem(key));
+                    const result = {};
+                    result[key] = Cookies.getItem(key);
+                    resolve(result);
                 } else {
                     reject();
                 }
