@@ -1,9 +1,9 @@
 import { Cookies }                  from 'utils/index.js';
 import { createReducerFromMapping } from 'redux/utils/index.js';
 
-const ADD           = 'R3IGN/Cookies/ADD',
-    ADD_SUCCESS     = 'R3IGN/Cookies/ADD_SUCCESS',
-    ADD_FAIL        = 'R3IGN/Cookies/ADD_FAIL';
+export const ADD            = 'R3IGN/Cookies/ADD';
+export const ADD_SUCCESS    = 'R3IGN/Cookies/ADD_SUCCESS';
+export const ADD_FAIL       = 'R3IGN/Cookies/ADD_FAIL';
 
 const initialState = { loaded: true };
 
