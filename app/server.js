@@ -2,43 +2,37 @@
 import path         from 'path';
 import http         from 'http';
 
-// Express and modules
 import Express      from 'express';
 import compression  from 'compression';
 import CookieDough  from 'cookie-dough';
 import cookieParser from 'cookie-parser';
 import staticServer from 'serve-static';
 
-// React
-import React                        from 'react';
-import ReactDOM                     from 'react-dom/server';
-import { Provider }                 from 'react-redux';
-import { RoutingContext, match }    from 'react-router';
+import React                                        from 'react';
+import ReactDOM                                     from 'react-dom/server';
+import { Provider }                                 from 'react-redux';
+import { createMemoryHistory }                      from 'history'
+import { RouterContext, useRouterHistory, match }   from 'react-router';
 
-// Redux
-import createStore  from './redux/create.js';
-
-// Radium
 import configuredRadium                     from './styles/configuredRadium.js';
 import { create as createMatchMediaMock }   from 'match-media-mock';
 
-// Routing
 import getRoutes    from './routes.js';
+import createStore  from 'redux/create.js';
 
-// Utils
 import {
     ApiClient,
     getStatusFromRoutes,
     fetchAllData
 } from 'utils/index.js';
 
-// Containers
 import HTML from './containers/HTML.jsx';
 
 const app = new Express(),
     server = new http.Server(app),
     staticsPath = path.join(__dirname, '..', 'static'),
-    matchMediaMock = createMatchMediaMock();
+    matchMediaMock = createMatchMediaMock(),
+    appHistory = useRouterHistory(createMemoryHistory)({});
 
 configuredRadium.setMatchMedia(matchMediaMock);
 
@@ -55,7 +49,7 @@ app.use((request, response) => {
 
     const client = new ApiClient(request),
         cookies = new CookieDough(request),
-        store = createStore(client, {
+        store = createStore(appHistory, client, {
             cookies: cookies.all()
         });
 
@@ -101,7 +95,7 @@ app.use((request, response) => {
             ).then(() => {
                 const component = (
                     <Provider store={ store } key="provider">
-                        <RoutingContext { ...renderProps } />
+                        <RouterContext { ...renderProps } />
                     </Provider>
                 );
 

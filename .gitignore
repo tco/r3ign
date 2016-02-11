@@ -1,3 +1,4 @@
 .idea/
 webpack-assets.json
 node_modules
+npm-debug.log

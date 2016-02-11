@@ -4,26 +4,29 @@ import {
     compose
 } from 'redux';
 
-import createMiddleware from './middleware/clientMiddleware.js';
+import { syncHistory }  from 'react-router-redux';
+import clientMiddleware from './middleware/clientMiddleware.js';
 
-export default function createStore(client, data) {
-    const middleware = [createMiddleware(client)];
+export default function createStore(history, client, data) {
+    const reduxRouterMiddleware = syncHistory(history);
+    const middleware = [reduxRouterMiddleware, clientMiddleware(client)];
 
-    let finalCreateStore;
+    let createStoreWithMiddleware;
     if(__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {
         const { persistState } = require('redux-devtools');
         const DevTools = require('../containers/DevTools/DevTools.jsx');
-        finalCreateStore = compose(
+        createStoreWithMiddleware = compose(
             applyMiddleware(...middleware),
             DevTools.instrument(),
             persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
         )(_createStore);
     } else {
-        finalCreateStore = applyMiddleware(...middleware)(_createStore);
+        createStoreWithMiddleware = applyMiddleware(...middleware)(_createStore);
     }
 
     const reducer = require('./modules/reducer.js');
-    const store = finalCreateStore(reducer, data);
+    const store = createStoreWithMiddleware(reducer, data);
+    reduxRouterMiddleware.listenForReplays(store);
 
     if(__DEVELOPMENT__ && module.hot) {
         module.hot.accept('./modules/reducer.js', () => {

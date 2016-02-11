@@ -1,29 +1,18 @@
-// Babel
 import 'babel-polyfill';
 
-// React
-import React                    from 'react';
-import ReactDOM                 from 'react-dom';
-import { Router }               from 'react-router';
+import React                        from 'react';
+import ReactDOM                     from 'react-dom';
+import { Provider }                 from 'react-redux';
+import { Router, browserHistory }   from 'react-router';
 
-// Redux
-import { Provider }             from 'react-redux';
-import { syncReduxAndRouter }   from 'redux-simple-router';
-import createStore              from './redux/create.js';
+import getRoutes                    from './routes.js';
+import { ApiClient }                from 'utils/index.js';
 
-// Routing
-import createHistory            from 'history/lib/createBrowserHistory';
-import getRoutes                from './routes.js';
-
-// Utils
-import { ApiClient }            from 'utils/index.js';
+import createStore                  from 'redux/create.js';
 
 const client = new ApiClient(),
     destination = document.getElementById('content'),
-    store = createStore(client, window.__data),
-    history = createHistory();
-
-syncReduxAndRouter(history, store);
+    store = createStore(browserHistory, client, window.__data);
 
 function createElement(Component, props) {
     if (Component.fetchInClientOnly) {
@@ -37,7 +26,7 @@ function createElement(Component, props) {
 }
 
 const component = (
-    <Router createElement={ createElement } history={ history }>
+    <Router createElement={ createElement } history={ browserHistory }>
         { getRoutes(store) }
     </Router>
 );
