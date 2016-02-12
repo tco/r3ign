@@ -1,5 +1,4 @@
 var webpack = require('webpack'),
-    path = require('path'),
     WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin'),
     WIT = new WebpackIsomorphicToolsPlugin(require('../webpack/webpack-isomorphic-config.js'));
 
@@ -21,15 +20,13 @@ module.exports = function (config) {
             'karma-webpack',
             WIT.development()
         ],
-        // run the bundle through the webpack and sourcemap plugins
         preprocessors: {
-            'tests.bundle.js': [ 'webpack', 'sourcemap' ]
+            'tests.bundle.js': [ 'webpack' ]
         },
         reporters: [ 'mocha' ],
         singleRun: true,
         // webpack config object
         webpack: {
-            devtool: 'inline-source-map',
             resolve: {
                 modulesDirectories: ['app', 'node_modules']
             },
@@ -38,7 +35,20 @@ module.exports = function (config) {
                     { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
                     { test: WIT.regular_expression('images'), loader: 'url-loader?limit=10240'}
                 ]
-            }
+            },
+            plugins: [
+                // hot reload
+                new webpack.IgnorePlugin(/webpack-assets\.json$/),
+                new webpack.DefinePlugin({
+                    __CLIENT__:         true,
+                    __SERVER__:         false,
+                    __DEVELOPMENT__:    true,
+                    __DEVTOOLS__:       false,
+                    __TEST__:           true
+                }),
+                WIT.development()
+            ]
+
         },
         webpackMiddleware: {
             noInfo: true

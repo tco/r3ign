@@ -1,4 +1,4 @@
-import createStore          from 'redux/create.js';
+import createStore from 'redux/create.js';
 
 import {
     ADD,
@@ -8,8 +8,7 @@ import {
 
 describe('Cookies', () => {
     it('.add adds a cookie', (done) => {
-
-        const store = createStore(null, {}),
+        const store = createStore(null, null, {}),
             testKey = 'R3IGN',
             testValue = 'ROCKS!';
 

@@ -5,5 +5,4 @@ Feature: Frontpage feature
 
     Scenario: Seeing frontpage
         Given I am on the R3IGN frontpage
-        When I watch the frontpage
         Then I should see "R3IGN" as the page title
