@@ -37,10 +37,12 @@ const getR3ignContainerStyles = (rotate) => {
 
 const RotatingLogo = (props) => {
     return (
-        <StyleRoot style={ getR3ignContainerStyles(props.rotate) } onClick={ props.toggleRotating } className="rotating-logo">
-            <div style={ r3ignLogoStyles }></div>
-            <div style={[r3ignLogoStyles, { transform: 'rotateY(180deg)' }]}></div>
-        </StyleRoot>
+        <a href="#" onClick={ props.toggleRotating } id="rotating-link">
+            <StyleRoot style={ getR3ignContainerStyles(props.rotate) } className="rotating-logo">
+                <div style={ r3ignLogoStyles }></div>
+                <div style={[r3ignLogoStyles, { transform: 'rotateY(180deg)' }]}></div>
+            </StyleRoot>
+        </a>
     );
 };
 

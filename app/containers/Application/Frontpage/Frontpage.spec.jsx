@@ -9,7 +9,7 @@ const {
     findRenderedDOMComponentWithClass
 } = ReactTestUtils;
 
-const store = createStore(null, {});
+const store = createStore(null, null, {});
 
 describe('Frontpage', () => {
     it('renders RotatingLogo', () => {

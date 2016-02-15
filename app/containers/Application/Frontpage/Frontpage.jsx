@@ -22,7 +22,8 @@ export default class Frontpage extends Component {
         };
     }
 
-    toggleRotating = () => {
+    toggleRotating = (event) => {
+        event.preventDefault();
         const rotateLogo = this.state.rotating,
             newState = rotateLogo ? 0 : 1;
 

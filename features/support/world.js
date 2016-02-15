@@ -1,4 +1,5 @@
 var zombie = require('zombie');
+
 function World() {
     this.browser = new zombie(); // this.browser will be available in step definitions
 

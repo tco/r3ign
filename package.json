@@ -96,7 +96,7 @@
       }
     },
     "test": {
-      "command": "./node_modules/.bin/karma start test/karma.config.js",
+      "command": "./node_modules/.bin/karma start test/karma.config.js && ./node_modules/.bin/cucumber.js",
       "env": {
         "NODE_PATH": "./app"
       }
