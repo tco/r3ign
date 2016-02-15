@@ -1,5 +1,3 @@
-var _ = require('lodash');
-
 module.exports = function () {
 
     this.Given(/^I am on the R3IGN frontpage$/, function (callback) {
