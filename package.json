@@ -57,7 +57,6 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.3.4",
-    "phantomjs": "^1.9.19",
     "piping": "^0.3.0",
     "react-addons-test-utils": "^0.14.6",
     "react-tools": "^0.10.0",
@@ -86,8 +85,7 @@
       "command": "node ./run/server.js",
       "env": {
         "NODE_PATH": "./app",
-        "NODE_ENV": "development",
-        "EMAIL": "antti@rintala.it"
+        "NODE_ENV": "development"
       }
     },
     "watch-client": {
