@@ -79,7 +79,8 @@
     "start-dev": "node ./node_modules/better-npm-run start-dev",
     "watch-client": "node ./node_modules/better-npm-run watch-client",
     "dev": "./node_modules/.bin/concurrent --kill-others 'npm run start-dev' 'npm run watch-client'",
-    "test": "node ./node_modules/better-npm-run test"
+    "test": "node ./node_modules/better-npm-run test",
+    "test-acceptance": "./node_modules/.bin/cucumber.js"
   },
   "betterScripts": {
     "start-dev": {
@@ -97,7 +98,7 @@
       }
     },
     "test": {
-      "command": "./node_modules/.bin/karma start test/karma.config.js && ./node_modules/.bin/cucumber.js",
+      "command": "./node_modules/.bin/karma start test/karma.config.js",
       "env": {
         "NODE_PATH": "./app"
       }
