@@ -11,7 +11,7 @@
     "cookie-dough": "0.0.6",
     "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
-    "history": "^1.17.0",
+    "history": "^2.0.0",
     "hoist-non-react-statics": "^1.0.3",
     "match-media-mock": "^0.1.0",
     "radium": "^0.16.2",
