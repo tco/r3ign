@@ -13,6 +13,8 @@ module.exports = function (config) {
         plugins: [
             'karma-phantomjs-shim',
             'karma-phantomjs-launcher',
+            'karma-coverage',
+            'karma-coveralls',
             'karma-chai',
             'karma-mocha',
             'karma-mocha-reporter',
@@ -21,11 +23,15 @@ module.exports = function (config) {
             WIT.development()
         ],
         preprocessors: {
-            'tests.bundle.js': [ 'webpack' ]
+            'tests.bundle.js': [ 'webpack', 'coverage' ]
         },
-        reporters: [ 'mocha' ],
+        reporters: [ 'mocha', 'coverage', 'coveralls' ],
         singleRun: true,
         // webpack config object
+        coverageReporter: {
+            type: 'lcov',
+            dir: 'coverage/'
+        },
         webpack: {
             resolve: {
                 modulesDirectories: ['app', 'node_modules']
