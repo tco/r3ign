@@ -1,23 +1,33 @@
 import createStore from 'redux/create.js';
 
 import {
-    ADD,
-    ADD_SUCCESS,
-    add as addCookie
+    add as addCookie,
+    remove as removeCookie
 } from 'redux/modules/cookies/cookies.js';
 
+let store;
+
 describe('Cookies', () => {
+    before(function() {
+        store = createStore(null, null, {});
+    });
+
     it('.add adds a cookie', (done) => {
-        const store = createStore(null, null, {}),
-            testKey = 'R3IGN',
+        const testKey = 'R3IGN',
             testValue = 'ROCKS!';
 
-        store.dispatch(addCookie(testKey, testValue, Infinity, '/'));
-
-        store.subscribe(function() {
+        store.dispatch(addCookie(testKey, testValue, Infinity, '/')).then(function() {
             expect(store.getState().cookies[testKey]).to.equal(testValue);
             done();
         });
+    });
 
-    })
+    it('.remove removes a cookie', (done) => {
+        const testKey = 'R3IGN';
+
+        store.dispatch(removeCookie(testKey, '/')).then(function() {
+            expect(store.getState().cookies[testKey]).to.equal(undefined);
+            done();
+        });
+    });
 });
