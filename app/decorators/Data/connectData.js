@@ -10,13 +10,13 @@ export default function connectData(fetchData, clientOnly = false) {
 
     return function wrapWithFetchData(WrappedComponent) {
         class ConnectData extends Component {
+            static fetchData = fetchData;
+            static fetchInClientOnly = clientOnly;
+
             render() {
                 return <WrappedComponent { ...this.props } />;
             }
         }
-
-        ConnectData.fetchData = fetchData;
-        ConnectData.fetchInClientOnly = clientOnly;
 
         return hoistStatics(ConnectData, WrappedComponent);
     };
