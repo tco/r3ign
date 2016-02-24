@@ -6,8 +6,7 @@ export default class ApiClient {
             forEach((method) => {
                 this[method] = (path, options) => {
                     return new Promise((resolve, reject) => {
-                        const url = this.formatUrl(path);
-                        const superRequest = superagent[method](url);
+                        const superRequest = superagent[method](path);
                         if(options && options.params) {
                             superRequest.query(options.params);
                         }
