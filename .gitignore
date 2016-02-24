@@ -2,3 +2,5 @@
 webpack-assets.json
 node_modules
 npm-debug.log
+notes
+test/coverage/
