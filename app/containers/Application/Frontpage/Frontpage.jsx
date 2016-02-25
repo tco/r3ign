@@ -15,33 +15,18 @@ import {
 }), { addCookie })
 export default class Frontpage extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            rotating: props.cookies.rotateLogo | 0
-        };
-    }
-
     toggleRotating = (event) => {
         event.preventDefault();
-        const rotateLogo = this.state.rotating,
+        const rotateLogo = parseInt(this.props.cookies.rotateLogo, 10),
             newState = rotateLogo ? 0 : 1;
 
-        this.props.addCookie('rotateLogo', newState, Infinity, '/').then((response) => {
-            const state = response.result.rotateLogo | 0;
-            if(state === newState) {
-                this.setState({
-                    rotating: !!newState
-                });
-            }
-        });
-
+        this.props.addCookie('rotateLogo', newState, Infinity, '/');
     };
 
     render() {
         return (
             <StandardPage>
-                <RotatingLogo rotate={ this.state.rotating } toggleRotating={ this.toggleRotating } />
+                <RotatingLogo rotate={ this.props.cookies.rotateLogo } toggleRotating={ this.toggleRotating } />
             </StandardPage>
         );
     }
